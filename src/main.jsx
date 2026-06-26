@@ -22,9 +22,9 @@ const DEFAULT_RETURN = '2026-07-05';
 
 const proofItems = [
   { icon: Zap, title: '100% Electric', text: 'Clean, quiet, instant torque' },
-  { icon: Clock3, title: 'Skip the Counter', text: 'Contactless pickup' },
-  { icon: ShieldCheck, title: 'Premium & Insured', text: 'Coverage included' },
-  { icon: Star, title: '5-Star Rated', text: 'Loved by renters' }
+  { icon: Clock3, title: 'No Counter', text: 'Reserve online and roll out' },
+  { icon: ShieldCheck, title: 'Insured', text: 'Premium coverage included' },
+  { icon: Star, title: '5-Star Ready', text: 'Built to win better bookings' }
 ];
 
 const specs = [
@@ -139,8 +139,9 @@ function Hero() {
       </div>
       <div className="hero-content">
         <div className="hero-copy">
-          <h1>Rent a Tesla Model 3 without the rental-counter hassle</h1>
-          <p>Reserve online. Pick up and go. Premium electric driving, on your schedule.</p>
+          <span className="hero-tag">Tesla Model 3 Rental</span>
+          <h1>Book the Tesla. Skip the counter.</h1>
+          <p>Premium electric driving with airport pickup, transparent pricing, and a fast online booking flow.</p>
           <div className="hero-actions">
             <a className="primary" href="#book">Check availability</a>
             <a className="secondary" href="#rates">See rates</a>
