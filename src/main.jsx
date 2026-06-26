@@ -135,7 +135,7 @@ function Hero() {
   return (
     <section className="hero" id="top">
       <div className="hero-bg" aria-hidden="true">
-        <img src="/model-3-waterfront.png" alt="" />
+        <img src="/white-model-3-side.jpg" alt="" />
       </div>
       <div className="hero-content">
         <div className="hero-copy">
@@ -175,7 +175,7 @@ function VehicleSection() {
   return (
     <section className="vehicle-section" id="fleet">
       <div className="vehicle-photo">
-        <img src="/model-3-waterfront.png" alt="Charcoal Tesla Model 3 parked by a waterfront skyline" />
+        <img src="/white-model-3-side.jpg" alt="White Tesla Model 3 parked outdoors" />
       </div>
       <div className="vehicle-copy" id="rates">
         <p className="section-label">The EV experience</p>
@@ -273,7 +273,7 @@ function FinalCta() {
         <p>Reserve your Tesla Model 3 in minutes.</p>
         <a className="primary" href="#book">Check availability</a>
       </div>
-      <img src="/model-3-waterfront.png" alt="" />
+      <img src="/white-model-3-side.jpg" alt="" />
     </section>
   );
 }
