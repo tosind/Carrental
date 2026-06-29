@@ -16,7 +16,7 @@ import {
 } from 'lucide-react';
 import './styles.css';
 
-const DAILY_RATE = 199;
+const DAILY_RATE = 149;
 const DEFAULT_PICKUP = '2026-07-03';
 const DEFAULT_RETURN = '2026-07-05';
 const DEFAULT_LOCATION = 'Ottawa International Airport (YOW)';
@@ -209,7 +209,7 @@ function VehicleSection() {
           ))}
         </div>
         <div className="rate-row">
-          <div><span>Daily rate</span><strong>$199/day</strong></div>
+          <div><span>Daily rate</span><strong>From $149/day</strong></div>
           <div><span>Included</span><strong>200 miles/day</strong></div>
           <div><span>Extra mile</span><strong>$0.45/mile</strong></div>
         </div>
