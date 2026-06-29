@@ -16,12 +16,12 @@ import {
 } from 'lucide-react';
 import './styles.css';
 
-const DAILY_RATE = 149;
+const DAILY_RATE = 80;
 const DEFAULT_PICKUP = '2026-07-03';
 const DEFAULT_RETURN = '2026-07-05';
 const DEFAULT_LOCATION = 'Ottawa International Airport (YOW)';
 const WHATSAPP_PHONE = '16137018072';
-const DEFAULT_WHATSAPP_MESSAGE = 'Hi VoltRide Rentals, I want to book the Tesla Model 3. Is it available?';
+const DEFAULT_WHATSAPP_MESSAGE = 'Hi VoltRide Rentals, I want to book the Tesla Model 3 SR Plus. Is it available?';
 
 function whatsappUrl(message) {
   return `https://wa.me/${WHATSAPP_PHONE}?text=${encodeURIComponent(message)}`;
@@ -35,8 +35,8 @@ const proofItems = [
 ];
 
 const specs = [
-  ['Up to 341 mi', 'Range estimate'],
-  ['AWD', 'Dual Motor'],
+  ['Up to 263 mi', 'Range estimate'],
+  ['RWD', 'Single Motor'],
   ['5 seats', 'Premium interior'],
   ['Supercharger', 'Network access']
 ];
@@ -78,7 +78,7 @@ function BookingPanel() {
   const days = useMemo(() => daysBetween(pickup, dropoff), [pickup, dropoff]);
   const estimate = days * DAILY_RATE;
   const bookingMessage = [
-    'Hi VoltRide Rentals, I want to book the Tesla Model 3.',
+    'Hi VoltRide Rentals, I want to book the Tesla Model 3 SR Plus.',
     `Pickup: ${pickup}`,
     `Return: ${dropoff}`,
     `Pickup location: ${location}`,
@@ -158,7 +158,7 @@ function Hero() {
       </div>
       <div className="hero-content">
         <div className="hero-copy">
-          <span className="hero-tag">Tesla Model 3 Rental</span>
+          <span className="hero-tag">Tesla Model 3 SR Plus Rental</span>
           <h1>Book the Tesla. Skip the counter.</h1>
           <p>Premium electric driving with Ottawa Airport pickup, transparent pricing, and fast WhatsApp booking.</p>
           <div className="hero-actions">
@@ -198,7 +198,7 @@ function VehicleSection() {
       </div>
       <div className="vehicle-copy" id="rates">
         <p className="section-label">The EV experience</p>
-        <h2>Tesla Model 3 Long Range</h2>
+        <h2>Tesla Model 3 SR Plus</h2>
         <div className="spec-grid">
           {specs.map(([title, text]) => (
             <div className="spec" key={title}>
@@ -209,7 +209,7 @@ function VehicleSection() {
           ))}
         </div>
         <div className="rate-row">
-          <div><span>Daily rate</span><strong>From $149/day</strong></div>
+          <div><span>Daily rate</span><strong>From $80/day</strong></div>
           <div><span>Included</span><strong>200 miles/day</strong></div>
           <div><span>Extra mile</span><strong>$0.45/mile</strong></div>
         </div>
@@ -289,7 +289,7 @@ function FinalCta() {
     <section className="final-cta">
       <div>
         <h2>Ready to drive electric?</h2>
-        <p>Reserve your Tesla Model 3 in minutes.</p>
+        <p>Reserve your Tesla Model 3 SR Plus in minutes.</p>
         <a className="primary" href={whatsappUrl(DEFAULT_WHATSAPP_MESSAGE)} target="_blank" rel="noreferrer">Book on WhatsApp</a>
       </div>
       <img src="/white-model-3-side.jpg" alt="" />
