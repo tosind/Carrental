@@ -19,6 +19,13 @@ import './styles.css';
 const DAILY_RATE = 199;
 const DEFAULT_PICKUP = '2026-07-03';
 const DEFAULT_RETURN = '2026-07-05';
+const DEFAULT_LOCATION = 'Ottawa International Airport (YOW)';
+const WHATSAPP_PHONE = '16137018072';
+const DEFAULT_WHATSAPP_MESSAGE = 'Hi VoltRide Rentals, I want to book the Tesla Model 3. Is it available?';
+
+function whatsappUrl(message) {
+  return `https://wa.me/${WHATSAPP_PHONE}?text=${encodeURIComponent(message)}`;
+}
 
 const proofItems = [
   { icon: Zap, title: '100% Electric', text: 'Clean, quiet, instant torque' },
@@ -35,7 +42,7 @@ const specs = [
 ];
 
 const benefits = [
-  { icon: Car, title: 'Airport, Delivered', text: 'Meet at arrivals or choose a delivery address.' },
+  { icon: Car, title: 'Ottawa Airport Pickup', text: 'Meet at YOW arrivals or choose a local delivery address.' },
   { icon: CalendarDays, title: 'Flexible & Easy', text: 'Change or extend your trip without counter lines.' },
   { icon: Smartphone, title: 'Digitally Seamless', text: 'Check in, unlock, and go from your phone.' },
   { icon: Heart, title: 'Made for Every Trip', text: 'Business travel, date nights, weekends, and everything between.' }
@@ -48,7 +55,7 @@ const reviews = [
 ];
 
 const faqs = [
-  ['How does pickup and delivery work?', 'Choose airport pickup, a delivery address, or a local handoff spot. We confirm the exact details after your request.'],
+  ['How does pickup and delivery work?', 'Choose Ottawa Airport pickup, a local delivery address, or a nearby handoff spot. We confirm the exact details by WhatsApp.'],
   ['Do I need to charge the car before returning?', 'Return it with the same charge level when possible. We can also handle recharge for a simple pass-through fee.'],
   ["What's included in the rate?", 'Insurance coverage, 200 miles per day, basic cleaning, and digital trip support are included.'],
   ['What if I need to extend my trip?', 'Send an extension request before your return time. If the vehicle is available, we update the booking.'],
@@ -66,14 +73,24 @@ function daysBetween(start, end) {
 function BookingPanel() {
   const [pickup, setPickup] = useState(DEFAULT_PICKUP);
   const [dropoff, setDropoff] = useState(DEFAULT_RETURN);
-  const [location, setLocation] = useState('Toronto Pearson International Airport');
+  const [location, setLocation] = useState(DEFAULT_LOCATION);
   const [submitted, setSubmitted] = useState(false);
   const days = useMemo(() => daysBetween(pickup, dropoff), [pickup, dropoff]);
   const estimate = days * DAILY_RATE;
+  const bookingMessage = [
+    'Hi VoltRide Rentals, I want to book the Tesla Model 3.',
+    `Pickup: ${pickup}`,
+    `Return: ${dropoff}`,
+    `Pickup location: ${location}`,
+    `Estimated total: $${estimate.toLocaleString()} for ${days} day${days === 1 ? '' : 's'}.`,
+    'Is it available?'
+  ].join('\n');
+  const bookingUrl = whatsappUrl(bookingMessage);
 
   function submitBooking(event) {
     event.preventDefault();
     setSubmitted(true);
+    window.open(bookingUrl, '_blank', 'noopener,noreferrer');
   }
 
   return (
@@ -92,22 +109,24 @@ function BookingPanel() {
       <label>
         <span>Location</span>
         <select value={location} onChange={(event) => setLocation(event.target.value)}>
-          <option>Toronto Pearson International Airport</option>
-          <option>Downtown Toronto</option>
-          <option>Mississauga delivery</option>
+          <option>Ottawa International Airport (YOW)</option>
+          <option>Downtown Ottawa</option>
+          <option>Gatineau pickup</option>
           <option>Custom address</option>
         </select>
       </label>
       <div className="estimate">
         <div>
           <strong>Estimated total</strong>
-          <span>{days} day{days === 1 ? '' : 's'} · {days * 200} miles included</span>
+          <span>{days} day{days === 1 ? '' : 's'} - {days * 200} miles included</span>
         </div>
         <b>${estimate.toLocaleString()}</b>
       </div>
-      <button className="primary full" type="submit">Check availability</button>
+      <button className="primary full" type="submit">Message on WhatsApp</button>
       {submitted && (
-        <p className="success">Request started for {location}. Add payment and driver details in the next step.</p>
+        <p className="success">
+          WhatsApp should open with your booking request. If it does not, <a href={bookingUrl} target="_blank" rel="noreferrer">tap here to message us</a>.
+        </p>
       )}
     </form>
   );
@@ -126,7 +145,7 @@ function Header() {
         <a href="#experience">Experience</a>
         <a href="#faq">FAQ</a>
       </nav>
-      <a className="header-cta" href="#book">Book now</a>
+      <a className="header-cta" href={whatsappUrl(DEFAULT_WHATSAPP_MESSAGE)} target="_blank" rel="noreferrer">Book now</a>
     </header>
   );
 }
@@ -141,7 +160,7 @@ function Hero() {
         <div className="hero-copy">
           <span className="hero-tag">Tesla Model 3 Rental</span>
           <h1>Book the Tesla. Skip the counter.</h1>
-          <p>Premium electric driving with airport pickup, transparent pricing, and a fast online booking flow.</p>
+          <p>Premium electric driving with Ottawa Airport pickup, transparent pricing, and fast WhatsApp booking.</p>
           <div className="hero-actions">
             <a className="primary" href="#book">Check availability</a>
             <a className="secondary" href="#rates">See rates</a>
@@ -234,7 +253,7 @@ function Reviews() {
                 <Star key={starIndex} size={15} fill="currentColor" strokeWidth={0} />
               ))}
             </div>
-            <p>“{quote}”</p>
+            <p>"{quote}"</p>
             <div className="avatar-row">
               <span>{name.slice(0, 1)}</span>
               <div><strong>{name}</strong><small>{role}</small></div>
@@ -271,7 +290,7 @@ function FinalCta() {
       <div>
         <h2>Ready to drive electric?</h2>
         <p>Reserve your Tesla Model 3 in minutes.</p>
-        <a className="primary" href="#book">Check availability</a>
+        <a className="primary" href={whatsappUrl(DEFAULT_WHATSAPP_MESSAGE)} target="_blank" rel="noreferrer">Book on WhatsApp</a>
       </div>
       <img src="/white-model-3-side.jpg" alt="" />
     </section>
@@ -288,7 +307,7 @@ function Footer() {
       <div className="footer-links">
         <a href="#fleet">Company</a>
         <a href="#faq">Support</a>
-        <a href="#book">Book now</a>
+        <a href={whatsappUrl(DEFAULT_WHATSAPP_MESSAGE)} target="_blank" rel="noreferrer">Book now</a>
       </div>
       <p className="copyright">&copy; 2026 VoltRide Rentals. All rights reserved.</p>
     </footer>
