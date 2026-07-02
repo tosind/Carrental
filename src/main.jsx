@@ -22,6 +22,7 @@ const DEFAULT_RETURN = '2026-07-05';
 const DEFAULT_LOCATION = 'Ottawa International Airport (YOW)';
 const WHATSAPP_PHONE = '16137018072';
 const DEFAULT_WHATSAPP_MESSAGE = 'Hi VoltRide Rentals, I want to book the Tesla Model 3 SR Plus. Is it available?';
+const TURO_LISTING_URL = 'https://turo.com/ca/en/car-rental/canada/gatineau-qc/tesla/model-3/2862390';
 
 function whatsappUrl(message) {
   return `https://wa.me/${WHATSAPP_PHONE}?text=${encodeURIComponent(message)}`;
@@ -145,7 +146,7 @@ function Header() {
         <a href="#experience">Experience</a>
         <a href="#faq">FAQ</a>
       </nav>
-      <a className="header-cta" href={whatsappUrl(DEFAULT_WHATSAPP_MESSAGE)} target="_blank" rel="noreferrer">Book now</a>
+      <a className="header-cta" href={TURO_LISTING_URL} target="_blank" rel="noreferrer">Book on Turo</a>
     </header>
   );
 }
@@ -160,10 +161,10 @@ function Hero() {
         <div className="hero-copy">
           <span className="hero-tag">Tesla Model 3 SR Plus Rental</span>
           <h1>Book the Tesla. Skip the counter.</h1>
-          <p>Premium electric driving with Ottawa Airport pickup, transparent pricing, and fast WhatsApp booking.</p>
+          <p>Premium electric driving with Ottawa Airport pickup, transparent pricing, and direct Turo or WhatsApp booking.</p>
           <div className="hero-actions">
-            <a className="primary" href="#book">Check availability</a>
-            <a className="secondary" href="#rates">See rates</a>
+            <a className="primary" href={TURO_LISTING_URL} target="_blank" rel="noreferrer">Book on Turo</a>
+            <a className="secondary" href="#book">Ask on WhatsApp</a>
           </div>
         </div>
         <div id="book" className="booking-wrap">
@@ -290,7 +291,10 @@ function FinalCta() {
       <div>
         <h2>Ready to drive electric?</h2>
         <p>Reserve your Tesla Model 3 SR Plus in minutes.</p>
-        <a className="primary" href={whatsappUrl(DEFAULT_WHATSAPP_MESSAGE)} target="_blank" rel="noreferrer">Book on WhatsApp</a>
+        <div className="final-actions">
+          <a className="primary" href={TURO_LISTING_URL} target="_blank" rel="noreferrer">Book on Turo</a>
+          <a className="secondary" href={whatsappUrl(DEFAULT_WHATSAPP_MESSAGE)} target="_blank" rel="noreferrer">Ask on WhatsApp</a>
+        </div>
       </div>
       <img src="/white-model-3-side.jpg" alt="" />
     </section>
@@ -307,7 +311,7 @@ function Footer() {
       <div className="footer-links">
         <a href="#fleet">Company</a>
         <a href="#faq">Support</a>
-        <a href={whatsappUrl(DEFAULT_WHATSAPP_MESSAGE)} target="_blank" rel="noreferrer">Book now</a>
+        <a href={TURO_LISTING_URL} target="_blank" rel="noreferrer">Book on Turo</a>
       </div>
       <p className="copyright">&copy; 2026 VoltRide Rentals. All rights reserved.</p>
     </footer>

@@ -786,6 +786,12 @@ select:focus {
   text-transform: uppercase;
 }
 
+.final-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
 .final-cta img {
   position: absolute;
   inset: 0;
