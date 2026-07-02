@@ -493,6 +493,16 @@ select:focus {
   text-transform: uppercase;
 }
 
+.local-note {
+  max-width: 620px;
+  margin-top: 18px;
+  color: var(--ink);
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.25;
+  text-transform: uppercase;
+}
+
 .spec-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);

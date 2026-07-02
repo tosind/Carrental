@@ -46,7 +46,7 @@ const benefits = [
   { icon: Car, title: 'Ottawa Airport Pickup', text: 'Meet at YOW arrivals or choose a local delivery address.' },
   { icon: CalendarDays, title: 'Flexible & Easy', text: 'Change or extend your trip without counter lines.' },
   { icon: Smartphone, title: 'Digitally Seamless', text: 'Check in, unlock, and go from your phone.' },
-  { icon: Heart, title: 'Made for Every Trip', text: 'Business travel, date nights, weekends, and everything between.' }
+  { icon: Heart, title: 'Ottawa & Gatineau', text: 'Built for business travel, date nights, weekends, and airport trips.' }
 ];
 
 const reviews = [
@@ -160,8 +160,8 @@ function Hero() {
       <div className="hero-content">
         <div className="hero-copy">
           <span className="hero-tag">Tesla Model 3 SR Plus Rental</span>
-          <h1>Book the Tesla. Skip the counter.</h1>
-          <p>Premium electric driving with Ottawa Airport pickup, transparent pricing, and direct Turo or WhatsApp booking.</p>
+          <h1>Tesla Model 3 rental in Ottawa.</h1>
+          <p>Premium electric driving with Ottawa Airport pickup, Gatineau service, transparent pricing, and direct Turo or WhatsApp booking.</p>
           <div className="hero-actions">
             <a className="primary" href={TURO_LISTING_URL} target="_blank" rel="noreferrer">Book on Turo</a>
             <a className="secondary" href="#book">Ask on WhatsApp</a>
@@ -200,6 +200,9 @@ function VehicleSection() {
       <div className="vehicle-copy" id="rates">
         <p className="section-label">The EV experience</p>
         <h2>Tesla Model 3 SR Plus</h2>
+        <p className="local-note">
+          Rent a 2021 Tesla Model 3 SR Plus for Ottawa Airport, Downtown Ottawa, Gatineau, weekend trips, business travel, and local electric car rentals.
+        </p>
         <div className="spec-grid">
           {specs.map(([title, text]) => (
             <div className="spec" key={title}>
